@@ -26,9 +26,10 @@ Both templates:
 ## Quick start (agents: follow the AGENTS.md files)
 
 ```bash
-# One-time setup: pinned toolchain + developer CLI from crates.io
+# One-time setup: pinned toolchain + developer CLI + component tool from crates.io
 rustup toolchain install 1.98.1 --profile minimal --component rustfmt --target wasm32-unknown-unknown
 cargo install relune-plugin-sdk --locked --features tools
+cargo install wasm-tools --version 1.254.0 --locked
 
 # Start a project from a template, then follow its AGENTS.md
 cp -R templates/rust-processor my-plugin && cd my-plugin

@@ -20,8 +20,10 @@ jobs:
       - name: Install pinned Rust toolchain (see each template's rust-toolchain.toml)
         run: rustup toolchain install 1.98.1 --profile minimal --component rustfmt --target wasm32-unknown-unknown
 
-      - name: Install the Relune plugin developer CLI from crates.io
-        run: cargo install relune-plugin-sdk --locked --features tools
+      - name: Install the Relune plugin developer CLI and component tool from crates.io
+        run: |
+          cargo install relune-plugin-sdk --locked --features tools
+          cargo install wasm-tools --version 1.254.0 --locked
 
       - name: Build the component and run the Mock Host test suite
         working-directory: templates/${{ matrix.template }}

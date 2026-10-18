@@ -21,7 +21,8 @@ project-level loop. Read both before making changes.
   documents; the `relune-plugin` CLI validates against them.
 - Templates pin: SDK `1.0.0`, manifest `specVersion` `"1.0"`, worlds
   `relune:client-plugin/processor@1.0.0` and `relune:client-plugin/connector@1.0.0`,
-  Rust toolchain `1.98.1` with target `wasm32-unknown-unknown`.
+  Rust toolchain `1.98.1` with target `wasm32-unknown-unknown`, and (via the CLI) the
+  `wasm-tools` component tool at its CLI-pinned version.
 - API and behavior questions are answered by the docs for the pinned version:
   <https://docs.rs/relune-plugin-sdk>. If docs and code disagree, trust the compiled
   contract and report the drift.
