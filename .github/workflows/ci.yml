@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  template-smoke:
+    name: ${{ matrix.template }} (build, test, package smoke)
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        template: [rust-processor, rust-connector]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pinned Rust toolchain (see each template's rust-toolchain.toml)
+        run: rustup toolchain install 1.98.1 --profile minimal --component rustfmt --target wasm32-unknown-unknown
+
+      - name: Install the Relune plugin developer CLI from crates.io
+        run: cargo install relune-plugin-sdk --locked --features tools
+
+      - name: Build the component and run the Mock Host test suite
+        working-directory: templates/${{ matrix.template }}
+        run: relune-plugin test
+
+      - name: Signature smoke — fresh key, signed package, artifact sanity
+        working-directory: templates/${{ matrix.template }}
+        env:
+          KEY_PATH: ${{ runner.temp }}/${{ matrix.template }}-author.key
+          PACKAGE_PATH: ${{ runner.temp }}/${{ matrix.template }}.relune-plugin
+        run: |
+          relune-plugin key generate --out "$KEY_PATH" --insecure-no-password
+          relune-plugin package \
+            --manifest manifest.json \
+            --component target/relune-plugin/plugin.wasm \
+            --key "$KEY_PATH" \
+            --locale en-US=locales/en-US.json \
+            --out "$PACKAGE_PATH" \
+            --force
+          test -s "$PACKAGE_PATH" || { echo "signed package missing or empty"; exit 1; }
+          rm -f "$KEY_PATH" "$PACKAGE_PATH"

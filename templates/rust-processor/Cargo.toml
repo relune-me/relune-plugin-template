@@ -1,0 +1,26 @@
+[package]
+# Rename the package together with `FINGERPRINT_LABEL` in src/lib.rs and the
+# plugin `id` in manifest.json — all four places carry the plugin identity.
+name = "my-processor"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+# Published Guest API: https://crates.io/crates/relune-plugin-sdk
+relune-plugin-sdk = "1.0.0"
+
+[dev-dependencies]
+# Test-only Mock Host runtime. The extra feature is merged into dev builds only;
+# it never leaks into the Wasm guest build.
+relune-plugin-sdk = { version = "1.0.0", features = ["test-support"] }
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true

@@ -1,0 +1,5 @@
+{
+  "name": "Paragraph Splitter",
+  "description": "Splits UTF-8 plain-text source entries into paragraph blocks.",
+  "policy": "Reads only the text content the runtime passes to this processor."
+}

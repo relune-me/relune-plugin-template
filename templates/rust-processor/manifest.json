@@ -1,0 +1,18 @@
+{
+  "specVersion": "1.0",
+  "id": "com.example.processor.paragraphs",
+  "version": "0.1.0",
+  "kind": "processor",
+  "publisher": {
+    "name": "Example Plugin Authors",
+    "supportContact": "support@example.com"
+  },
+  "releasedAt": "2026-10-18T00:00:00Z",
+  "hostCapabilities": {},
+  "processor": {
+    "outputSlots": ["blocks"],
+    "rawContent": {
+      "suffixes": ["txt"]
+    }
+  }
+}

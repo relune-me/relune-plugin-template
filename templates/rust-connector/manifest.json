@@ -1,0 +1,38 @@
+{
+  "specVersion": "1.0",
+  "id": "com.example.connector.localfolder",
+  "version": "0.1.0",
+  "kind": "connector",
+  "publisher": {
+    "name": "Example Plugin Authors",
+    "supportContact": "support@example.com"
+  },
+  "releasedAt": "2026-10-18T00:00:00Z",
+  "configSchema": {
+    "type": "object",
+    "required": ["folder"],
+    "additionalProperties": false,
+    "properties": {
+      "folder": {
+        "type": "string",
+        "x-relune": {
+          "category": "BINDING",
+          "changeImpact": "CONTENT_REREAD",
+          "controlHint": "folder",
+          "summary": true
+        }
+      }
+    }
+  },
+  "hostCapabilities": {
+    "directoryReadAccess": [
+      {
+        "id": "source",
+        "origin": {
+          "fieldId": "folder",
+          "kind": "FIELD"
+        }
+      }
+    ]
+  }
+}
