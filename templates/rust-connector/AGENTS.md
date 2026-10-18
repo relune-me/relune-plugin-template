@@ -21,6 +21,10 @@ relune-plugin package \
 Manual alternative: `relune-plugin build`, then
 `RELUNE_PLUGIN_COMPONENT=target/relune-plugin/plugin.wasm cargo test`.
 
+Publishing is an author action outside this loop: `relune-plugin publish ../my-connector.relune-plugin`
+signs the author in through the browser once, then uploads under their account (the first-publish
+key locks plugin ownership). Neither the template nor its CI publishes anything.
+
 ## Facts you must not restate or copy
 
 - Contract (manifest schema, signature format, WIT) comes from the pinned

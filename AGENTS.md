@@ -19,7 +19,7 @@ project-level loop. Read both before making changes.
   published [`relune-plugin-sdk`](https://crates.io/crates/relune-plugin-sdk) release pinned in
   each template's `Cargo.toml`. The SDK bundles the schema, signature contract, and WIT
   documents; the `relune-plugin` CLI validates against them.
-- Templates pin: SDK `1.0.0`, manifest `specVersion` `"1.0"`, worlds
+- Templates pin: SDK `1.0.1`, manifest `specVersion` `"1.0"`, worlds
   `relune:client-plugin/processor@1.0.0` and `relune:client-plugin/connector@1.0.0`,
   Rust toolchain `1.98.1` with target `wasm32-unknown-unknown`, and (via the CLI) the
   `wasm-tools` component tool at its CLI-pinned version.
@@ -67,7 +67,8 @@ Minimum rename checklist (all four or the contract/graphs will disagree):
 - Never copy schema, WIT, signature fixtures, or canonicalization code into a plugin project.
   The pinned SDK is the only contract source; report missing APIs as SDK gaps instead.
 - Never add upload, marketplace, telemetry, or credential handling to templates.
-  Publishing happens through Relune's own services and is out of scope here.
+  Publishing is performed by the official CLI (`relune-plugin publish`) and Relune's
+  services; templates embed no publishing automation.
 - Keys (`*.key`, PEM files) and signed packages (`*.relune-plugin`) stay outside the project
   directory; `.gitignore` rejects them as a backstop.
 - Keep the pinned toolchain and SDK versions unless the task explicitly asks for an upgrade,

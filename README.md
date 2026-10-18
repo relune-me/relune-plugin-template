@@ -14,7 +14,7 @@ Two templates are provided:
 
 Both templates:
 
-- Depend on [`relune-plugin-sdk`](https://crates.io/crates/relune-plugin-sdk) **1.0.0** from
+- Depend on [`relune-plugin-sdk`](https://crates.io/crates/relune-plugin-sdk) **1.0.1** from
   crates.io — no path dependencies, no monorepo access needed.
 - Compile to Wasm Components for the contract worlds
   `relune:client-plugin/processor@1.0.0` and `relune:client-plugin/connector@1.0.0`.
@@ -50,5 +50,21 @@ SDK; the templates cover only the baseline, and both AGENTS.md files list the ex
 points without duplicating signatures.
 
 Signing keys, passphrases, and signed packages belong outside the project directory.
-Nothing in the templates uploads anything anywhere — publishing is handled (and gated) by
-Relune's own services.
+
+## Publishing (author action)
+
+Publishing is not part of the template loop, and no template embeds publishing automation. It is
+performed by the official CLI and Relune's services:
+
+```bash
+relune-plugin publish ../my-plugin.relune-plugin
+```
+
+- The first publish opens the browser once for an OAuth consent (loopback PKCE redirect). The CLI
+  then keeps the authorization in the user config directory (Unix `0600`) and reuses it until
+  `relune-plugin auth logout`; `relune-plugin auth status` shows the current account.
+- Publishing is constrained by the account and by the plugin's first-publish public key: the key
+  that first publishes a plugin id locks ownership, and later versions must be signed by it.
+- Quota semantics: every request that leaves the CLI counts against the publish quota for the
+  current UTC hour whether it succeeds or fails, is not refunded, and the CLI never retries
+  automatically after the request was sent.
