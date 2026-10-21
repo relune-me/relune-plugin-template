@@ -1,0 +1,10 @@
+{
+  "name": "Local Folder Connector",
+  "description": "Enumerates and reads files from a host-authorized local folder.",
+  "policy": "Requires one directory binding ('folder') that the user grants explicitly.",
+  "config": {
+    "folder": {
+      "title": "Folder"
+    }
+  }
+}

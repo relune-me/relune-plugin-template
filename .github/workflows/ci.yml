@@ -40,7 +40,7 @@ jobs:
             --manifest manifest.json \
             --component target/relune-plugin/plugin.wasm \
             --key "$KEY_PATH" \
-            --locale en-US=locales/en-US.json \
+            --locale en=locales/en.json \
             --out "$PACKAGE_PATH" \
             --force
           test -s "$PACKAGE_PATH" || { echo "signed package missing or empty"; exit 1; }

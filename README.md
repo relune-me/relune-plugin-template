@@ -14,7 +14,7 @@ Two templates are provided:
 
 Both templates:
 
-- Depend on [`relune-plugin-sdk`](https://crates.io/crates/relune-plugin-sdk) **1.0.1** from
+- Depend on [`relune-plugin-sdk`](https://crates.io/crates/relune-plugin-sdk) **1.0.2** from
   crates.io — no path dependencies, no monorepo access needed.
 - Compile to Wasm Components for the contract worlds
   `relune:client-plugin/processor@1.0.0` and `relune:client-plugin/connector@1.0.0`.
@@ -39,7 +39,7 @@ relune-plugin package \
   --manifest manifest.json \
   --component target/relune-plugin/plugin.wasm \
   --key ../my-author.key \
-  --locale en-US=locales/en-US.json \
+  --locale en=locales/en.json \
   --out ../my-plugin.relune-plugin \
   --force
 ```

@@ -9,7 +9,7 @@ paragraph). It exercises the baseline processor surface only — input content, 
 
 ```text
 manifest.json        Contract manifest (specVersion "1.0")
-locales/en-US.json   Display name/description/policy
+locales/en.json      Display name/description/policy
 src/lib.rs           Guest implementation
 tests/host_test.rs   Mock Host acceptance tests over the real component
 rust-toolchain.toml  Pins Rust 1.98.1 + wasm32-unknown-unknown
@@ -25,7 +25,7 @@ relune-plugin package \
   --manifest manifest.json \
   --component target/relune-plugin/plugin.wasm \
   --key ../my-author.key \
-  --locale en-US=locales/en-US.json \
+  --locale en=locales/en.json \
   --out ../my-processor.relune-plugin \
   --force
 ```

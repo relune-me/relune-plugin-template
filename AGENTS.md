@@ -19,7 +19,7 @@ project-level loop. Read both before making changes.
   published [`relune-plugin-sdk`](https://crates.io/crates/relune-plugin-sdk) release pinned in
   each template's `Cargo.toml`. The SDK bundles the schema, signature contract, and WIT
   documents; the `relune-plugin` CLI validates against them.
-- Templates pin: SDK `1.0.1`, manifest `specVersion` `"1.0"`, worlds
+- Templates pin: SDK `1.0.2`, manifest `specVersion` `"1.0"`, worlds
   `relune:client-plugin/processor@1.0.0` and `relune:client-plugin/connector@1.0.0`,
   Rust toolchain `1.98.1` with target `wasm32-unknown-unknown`, and (via the CLI) the
   `wasm-tools` component tool at its CLI-pinned version.
@@ -39,7 +39,7 @@ relune-plugin package \
   --manifest manifest.json \
   --component target/relune-plugin/plugin.wasm \
   --key ../<project>-author.key \
-  --locale en-US=locales/en-US.json \
+  --locale en=locales/en.json \
   --out ../<project>.relune-plugin \
   --force
 ```
@@ -60,7 +60,7 @@ Minimum rename checklist (all four or the contract/graphs will disagree):
 2. `src/lib.rs` → the `FINGERPRINT_LABEL` byte string (funnels into the implementation
    fingerprint; change it when implementation behavior changes in a user-visible way).
 3. `manifest.json` → `id`, `version`, `publisher` (and `releasedAt` for new releases).
-4. `locales/en-US.json` → user-visible `name`, `description`, and an honest `policy`.
+4. `locales/en.json` → user-visible `name`, `description`, and an honest `policy`.
 
 ## Rules for agents
 

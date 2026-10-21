@@ -13,7 +13,7 @@ relune-plugin package \
   --manifest manifest.json \
   --component target/relune-plugin/plugin.wasm \
   --key ../my-author.key \
-  --locale en-US=locales/en-US.json \
+  --locale en=locales/en.json \
   --out ../my-connector.relune-plugin \
   --force
 ```

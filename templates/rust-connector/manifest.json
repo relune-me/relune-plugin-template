@@ -3,6 +3,8 @@
   "id": "com.example.connector.localfolder",
   "version": "0.1.0",
   "kind": "connector",
+  "defaultLocale": "en",
+  "locales": ["en"],
   "publisher": {
     "name": "Example Plugin Authors",
     "supportContact": "support@example.com"

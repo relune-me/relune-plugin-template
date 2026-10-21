@@ -11,12 +11,12 @@ crate-type = ["cdylib"]
 
 [dependencies]
 # Published Guest API: https://crates.io/crates/relune-plugin-sdk
-relune-plugin-sdk = "1.0.1"
+relune-plugin-sdk = "1.0.2"
 
 [dev-dependencies]
 # Test-only Mock Host runtime. The extra feature is merged into dev builds only;
 # it never leaks into the Wasm guest build.
-relune-plugin-sdk = { version = "1.0.1", features = ["test-support"] }
+relune-plugin-sdk = { version = "1.0.2", features = ["test-support"] }
 
 [profile.release]
 codegen-units = 1

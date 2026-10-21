@@ -13,7 +13,7 @@ relune-plugin package \
   --manifest manifest.json \
   --component target/relune-plugin/plugin.wasm \
   --key ../my-author.key \
-  --locale en-US=locales/en-US.json \
+  --locale en=locales/en.json \
   --out ../my-processor.relune-plugin \
   --force
 ```
@@ -44,7 +44,7 @@ key locks plugin ownership). Neither the template nor its CI publishes anything.
 3. `relune-plugin package` with a fresh key produces a signed package; the CLI rejects
    contract violations (schema, worlds, signature payload) automatically.
 4. Manifest/locale copy updated when user-visible naming or policy changed
-   (`manifest.json`, `locales/en-US.json`).
+   (`manifest.json`, `locales/en.json`).
 5. `FINGERPRINT_LABEL` updated when the fingerprint should change (user-visible behavior
    change); stable otherwise — it feeds `implementation_fingerprint()`.
 

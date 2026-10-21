@@ -664,9 +664,9 @@ dependencies = [
 
 [[package]]
 name = "relune-plugin-sdk"
-version = "1.0.1"
+version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2aeed3e30e89525c2e2270bfeb822b70936b8f628cac10ad0ebe01186e75f0eb"
+checksum = "73fc0ed5c810eede50b304c4e07729e534064e5589705e8f952ad06f9dfb5bee"
 dependencies = [
  "wasmtime",
  "wit-bindgen",
